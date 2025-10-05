@@ -1,5 +1,7 @@
 const SELECT = `
-    SELECT * FROM WeightEntry
+    SELECT * 
+    FROM WeightEntry
+    ORDER BY date_recorded ASC
 `;
 
 const CREATE = `

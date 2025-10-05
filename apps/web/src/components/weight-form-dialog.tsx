@@ -48,11 +48,9 @@ export const WeightFormDialog = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-
     createWeightEntryMutation.mutate({
       weight: values.weight,
-      dateRecorded: values.dateRecorded.toUTCString(),
+      dateRecorded: values.dateRecorded.toISOString(),
     });
   }
 
@@ -63,12 +61,7 @@ export const WeightFormDialog = () => {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit, (errors) => {
-              console.log(errors);
-            })}
-            className="space-y-6"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <DialogHeader>
               <DialogTitle>Add weight entry</DialogTitle>
               <DialogDescription>

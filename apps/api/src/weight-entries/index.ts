@@ -14,7 +14,7 @@ const app = new Hono<HonoBindings>()
     const { weight, dateRecorded } = c.req.valid("json");
 
     const { success } = await c.env.WEIGHT_TRACKER.prepare(CREATE)
-      .bind(weight, dateRecorded.toUTCString())
+      .bind(weight, dateRecorded.toISOString())
       .run();
 
     return c.json({
@@ -26,7 +26,7 @@ const app = new Hono<HonoBindings>()
     const { dateRecorded, weight } = c.req.valid("json");
 
     const { success } = await c.env.WEIGHT_TRACKER.prepare(UPDATE)
-      .bind(weight, dateRecorded.toUTCString(), id)
+      .bind(weight, dateRecorded.toISOString(), id)
       .run();
 
     return c.json({
