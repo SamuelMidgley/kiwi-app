@@ -1,5 +1,12 @@
+import { useMutation } from "@tanstack/react-query";
+import type { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+
+import { deleteWeightEntryOptions } from "@/api/weight-tracker";
 import type { WeightEntry } from "@/types/weight-tracker";
-import { DataTable } from "./data-table";
+
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,12 +14,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
-import type { ColumnDef } from "@tanstack/react-table";
-import { format } from "date-fns";
-import { useMutation } from "@tanstack/react-query";
-import { deleteWeightEntryOptions } from "@/api/weight-tracker";
+import { DataTable } from "./data-table";
 
 type WeightTableProps = {
   weightEntries: WeightEntry[];

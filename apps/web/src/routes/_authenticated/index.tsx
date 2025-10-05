@@ -1,5 +1,6 @@
-import localStorageHelper from "@/utils/localStorageHelper";
 import { createFileRoute, redirect } from "@tanstack/react-router";
+
+import localStorageHelper from "@/utils/localStorageHelper";
 
 export const Route = createFileRoute("/_authenticated/")({
   beforeLoad: ({ location }) => {

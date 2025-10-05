@@ -2,10 +2,11 @@ import {
   type ColumnDef,
   flexRender,
   getCoreRowModel,
-  type SortingState,
   getSortedRowModel,
+  type SortingState,
   useReactTable,
 } from "@tanstack/react-table";
+import React from "react";
 
 import {
   Table,
@@ -15,7 +16,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React from "react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

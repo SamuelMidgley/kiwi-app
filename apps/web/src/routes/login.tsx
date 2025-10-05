@@ -1,6 +1,7 @@
+import { createFileRoute, redirect } from "@tanstack/react-router";
+
 import { Login } from "@/pages/login";
 import localStorageHelper from "@/utils/localStorageHelper";
-import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/login")({
   validateSearch: (search) => ({
