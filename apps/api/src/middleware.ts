@@ -1,7 +1,8 @@
-import { HTTPException } from "hono/http-exception";
-import { HonoApp } from "./types";
 import { basicAuth } from "hono/basic-auth";
 import { cors } from "hono/cors";
+import { HTTPException } from "hono/http-exception";
+
+import { HonoApp } from "./types";
 
 export const addMiddleware = (app: HonoApp) => {
   app.use(

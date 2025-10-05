@@ -1,6 +1,7 @@
-import { Hono } from "hono";
-import { HonoBindings } from "../types";
 import { zValidator } from "@hono/zod-validator";
+import { Hono } from "hono";
+
+import { HonoBindings } from "../types";
 import { CREATE, DELETE, SELECT, UPDATE } from "./sql";
 import { createValidator, updateValidator } from "./validators";
 
