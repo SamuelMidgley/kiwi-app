@@ -1,11 +1,12 @@
+import { format } from "date-fns";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+
 import {
   type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { format } from "date-fns";
 import type { WeightEntry } from "@/types/weight-tracker";
 
 const chartConfig = {

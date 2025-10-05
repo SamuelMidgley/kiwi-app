@@ -1,0 +1,45 @@
+name: Run ESLint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Step 3: Install dependencies for apps/api
+      - name: Install dependencies for API
+        working-directory: apps/api
+        run: npm install
+
+      # Step 4: Run ESLint for apps/api
+      - name: Run ESLint for API
+        working-directory: apps/api
+        run: npx eslint .
+
+      # Step 5: Install dependencies for apps/web
+      - name: Install dependencies for Web
+        working-directory: apps/web
+        run: npm install
+
+      # Step 6: Run ESLint for apps/web
+      - name: Run ESLint for Web
+        working-directory: apps/web
+        run: npx eslint .

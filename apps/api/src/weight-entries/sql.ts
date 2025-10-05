@@ -22,4 +22,4 @@ const DELETE = `
     WHERE id = ?
 `;
 
-export { SELECT, CREATE, UPDATE, DELETE };
+export { CREATE, DELETE,SELECT, UPDATE };

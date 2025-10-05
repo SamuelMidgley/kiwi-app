@@ -1,11 +1,12 @@
 import { WeightIcon } from "lucide-react";
+
 import {
   Empty,
+  EmptyContent,
+  EmptyDescription,
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-  EmptyDescription,
-  EmptyContent,
 } from "./ui/empty";
 import { WeightFormDialog } from "./weight-form-dialog";
 

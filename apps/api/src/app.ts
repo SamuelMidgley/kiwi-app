@@ -1,6 +1,7 @@
 import { Hono } from "hono";
-import { Bindings, HonoApp } from "./types";
+
 import { addMiddleware } from "./middleware";
+import { Bindings, HonoApp } from "./types";
 
 export const createAppWithMiddleware = (): HonoApp => {
   const app = new Hono<{ Bindings: Bindings }>();

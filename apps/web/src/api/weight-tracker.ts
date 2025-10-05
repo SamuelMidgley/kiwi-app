@@ -1,6 +1,8 @@
-import type { WeightEntry } from "@/types/weight-tracker";
-import api from "./api";
 import { mutationOptions, queryOptions } from "@tanstack/react-query";
+
+import type { WeightEntry } from "@/types/weight-tracker";
+
+import api from "./api";
 
 const getWeightEntries = () => {
   return api.get<WeightEntry[]>("/weight-entries");

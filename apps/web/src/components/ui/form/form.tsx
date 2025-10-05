@@ -1,16 +1,17 @@
-import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { Slot } from "@radix-ui/react-slot";
+import * as React from "react";
 import {
   Controller,
-  FormProvider,
   type ControllerProps,
   type FieldPath,
   type FieldValues,
+  FormProvider,
 } from "react-hook-form";
 
-import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+
 import {
   FormFieldContext,
   FormItemContext,
@@ -117,10 +118,10 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
 
 export {
   Form,
-  FormItem,
-  FormLabel,
   FormControl,
   FormDescription,
-  FormMessage,
   FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 };

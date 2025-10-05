@@ -1,5 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { addHours } from "date-fns";
+import { useForm } from "react-hook-form";
+import z from "zod";
+
+import { createWeightEntryOptions } from "@/api/weight-tracker";
+
 import { Button } from "./ui/button";
+import { DatePicker } from "./ui/date-picker";
 import {
   Dialog,
   DialogClose,
@@ -19,12 +27,6 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { DatePicker } from "./ui/date-picker";
-import { useMutation } from "@tanstack/react-query";
-import { createWeightEntryOptions } from "@/api/weight-tracker";
 
 const formSchema = z.object({
   dateRecorded: z.date().max(addHours(new Date(), 2), {

@@ -1,5 +1,6 @@
-import localStorageHelper from "@/utils/localStorageHelper";
 import axiosBuilder, { type Options } from "redaxios";
+
+import localStorageHelper from "@/utils/localStorageHelper";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
