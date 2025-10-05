@@ -1,5 +1,6 @@
 import { Typography } from "@/components/ui/typography";
 import { WeightChart } from "@/components/weight-chart";
+import { WeightEntryEmpty } from "@/components/weight-entry-empty";
 import { WeightFormDialog } from "@/components/weight-form-dialog";
 import WeightTable from "@/components/weight-table/weight-table";
 import type { WeightEntry } from "@/types/weight-tracker";
@@ -17,10 +18,14 @@ export const WeightTracker = ({ weightEntries }: WeightTrackerProps) => {
         </Typography>
         <WeightFormDialog />
       </div>
-      <div className="space-y-8">
-        <WeightChart weightEntries={weightEntries} />
-        <WeightTable weightEntries={weightEntries} />
-      </div>
+      {weightEntries.length === 0 ? (
+        <WeightEntryEmpty />
+      ) : (
+        <div className="space-y-8">
+          <WeightChart weightEntries={weightEntries} />
+          <WeightTable weightEntries={weightEntries} />
+        </div>
+      )}
     </div>
   );
 };

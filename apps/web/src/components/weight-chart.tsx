@@ -36,12 +36,18 @@ export function WeightChart({ weightEntries }: WeightChartProps) {
           tickLine={false}
           axisLine={false}
           tickMargin={10}
+          domain={[60, 90]}
         />
         <ChartTooltip
           content={<ChartTooltipContent />}
           labelFormatter={(label) => format(label, "dd/MM/yyyy")}
         />
-        <Line dataKey="weight" fill="var(--color-desktop)" />
+        <Line
+          dataKey="weight"
+          fill="var(--color-desktop)"
+          dot={false}
+          type="monotone"
+        />
       </LineChart>
     </ChartContainer>
   );
