@@ -10,11 +10,9 @@
 			"database_id": "d5c2144a-5bbe-4805-b0b6-8554d725a13c"
 		}
 	],
-	"keep_vars": true,
-	"vars": {
-	  "USERNAME": "username",
-	  "PASSWORD": "password"
-	},
+	// "vars": {
+	//   "my_var": "my-var",
+	// },
 	// "compatibility_flags": [
 	//   "nodejs_compat"
 	// ],
