@@ -9,13 +9,14 @@
 			"database_name": "WEIGHT_TRACKER",
 			"database_id": "d5c2144a-5bbe-4805-b0b6-8554d725a13c"
 		}
-	]
+	],
+	"vars": {
+	  "USERNAME": "username",
+	  "PASSWORD": "password"
+	},
 	// "compatibility_flags": [
 	//   "nodejs_compat"
 	// ],
-	// "vars": {
-	//   "MY_VAR": "my-variable"
-	// },
 	// "kv_namespaces": [
 	//   {
 	//     "binding": "MY_KV_NAMESPACE",
@@ -26,13 +27,6 @@
 	//   {
 	//     "binding": "MY_BUCKET",
 	//     "bucket_name": "my-bucket"
-	//   }
-	// ],
-	// "d1_databases": [
-	//   {
-	//     "binding": "MY_DB",
-	//     "database_name": "my-database",
-	//     "database_id": ""
 	//   }
 	// ],
 	// "ai": {

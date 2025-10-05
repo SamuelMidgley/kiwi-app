@@ -5,6 +5,7 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "d1": "wrangler d1 execute WEIGHT_TRACKER --remote --file=./db/schema.sql",
     "d1:local": "wrangler d1 execute WEIGHT_TRACKER --local --file=./db/schema.sql",
     "d1:local:seed": "wrangler d1 execute WEIGHT_TRACKER --local --file=./db/seed.sql"
   },
