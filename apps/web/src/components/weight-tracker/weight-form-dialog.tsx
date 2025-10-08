@@ -6,8 +6,8 @@ import z from "zod";
 
 import { createWeightEntryOptions } from "@/api/weight-tracker";
 
-import { Button } from "./ui/button";
-import { DatePicker } from "./ui/date-picker";
+import { Button } from "../ui/button";
+import { DatePicker } from "../ui/date-picker";
 import {
   Dialog,
   DialogClose,
@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "../ui/dialog";
 import {
   Form,
   FormControl,
@@ -25,8 +25,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
+} from "../ui/form";
+import { Input } from "../ui/input";
 
 const formSchema = z.object({
   dateRecorded: z.date().max(addHours(new Date(), 2), {

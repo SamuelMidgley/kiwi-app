@@ -8,6 +8,7 @@ import pluginRouter from "@tanstack/eslint-plugin-router";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import pluginJsxA11y from "eslint-plugin-jsx-a11y";
+import pluginReact from "eslint-plugin-react";
 
 export default defineConfig([
   globalIgnores(["dist"]),
@@ -20,6 +21,8 @@ export default defineConfig([
       reactRefresh.configs.vite,
       pluginRouter.configs["flat/recommended"],
       pluginQuery.configs["flat/recommended"],
+      pluginReact.configs.flat.recommended, // This is not a plugin object, but a shareable config object
+      pluginReact.configs.flat["jsx-runtime"], // Add this if you are using React 17+
     ],
     plugins: {
       "simple-import-sort": simpleImportSort,
