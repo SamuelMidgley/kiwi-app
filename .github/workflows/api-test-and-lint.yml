@@ -1,0 +1,40 @@
+name: Run tests and linting for api
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lintandtest:
+    name: Run tests and lint
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "*"
+
+      # Step 3: Install dependencies for apps/api
+      - name: Install dependencies for api
+        working-directory: apps/api
+        run: npm install
+
+      # Step 4: Run ESLint for apps/api
+      - name: Run ESLint for api
+        working-directory: apps/api
+        run: npm run lint
+
+      # Step 5: Run tests for apps/api
+      - name: Run tests for api
+        working-directory: apps/api
+        run: npm run test
