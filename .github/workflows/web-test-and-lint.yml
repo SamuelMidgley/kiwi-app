@@ -1,0 +1,40 @@
+name: Run tests and linting for web
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lintandtest:
+    name: Run tests and lint
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "*"
+
+      # Step 3: Install dependencies for apps/web
+      - name: Install dependencies for Web
+        working-directory: apps/web
+        run: npm install
+
+      # Step 4: Run ESLint for apps/web
+      - name: Run ESLint for Web
+        working-directory: apps/web
+        run: npm run lint
+
+      # Step 5: Run tests for apps/web
+      - name: Run tests for Web
+        working-directory: apps/web
+        run: npm run test
