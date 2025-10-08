@@ -4,16 +4,16 @@ import { format } from "date-fns";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 import { deleteWeightEntryOptions } from "@/api/weight-tracker";
-import type { WeightEntry } from "@/types/weight-tracker";
-
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import type { WeightEntry } from "@/types/weight-tracker";
+
 import { DataTable } from "./data-table";
 
 type WeightTableProps = {

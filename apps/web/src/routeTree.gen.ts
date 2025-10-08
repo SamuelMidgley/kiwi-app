@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as GamesSolitaireRouteImport } from './routes/games/solitaire'
 import { Route as AuthenticatedWeightTrackerRouteImport } from './routes/_authenticated/weight-tracker'
 
 const LoginRoute = LoginRouteImport.update({
@@ -23,6 +24,11 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GamesSolitaireRoute = GamesSolitaireRouteImport.update({
+  id: '/games/solitaire',
+  path: '/games/solitaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedWeightTrackerRoute =
   AuthenticatedWeightTrackerRouteImport.update({
     id: '/_authenticated/weight-tracker',
@@ -33,34 +39,39 @@ const AuthenticatedWeightTrackerRoute =
 export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/games/solitaire': typeof GamesSolitaireRoute
   '/': typeof AuthenticatedIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/games/solitaire': typeof GamesSolitaireRoute
   '/': typeof AuthenticatedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/login': typeof LoginRoute
   '/_authenticated/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/games/solitaire': typeof GamesSolitaireRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/weight-tracker' | '/'
+  fullPaths: '/login' | '/weight-tracker' | '/games/solitaire' | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/weight-tracker' | '/'
+  to: '/login' | '/weight-tracker' | '/games/solitaire' | '/'
   id:
     | '__root__'
     | '/login'
     | '/_authenticated/weight-tracker'
+    | '/games/solitaire'
     | '/_authenticated/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   AuthenticatedWeightTrackerRoute: typeof AuthenticatedWeightTrackerRoute
+  GamesSolitaireRoute: typeof GamesSolitaireRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
@@ -80,6 +91,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/games/solitaire': {
+      id: '/games/solitaire'
+      path: '/games/solitaire'
+      fullPath: '/games/solitaire'
+      preLoaderRoute: typeof GamesSolitaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/weight-tracker': {
       id: '/_authenticated/weight-tracker'
       path: '/weight-tracker'
@@ -93,6 +111,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   AuthenticatedWeightTrackerRoute: AuthenticatedWeightTrackerRoute,
+  GamesSolitaireRoute: GamesSolitaireRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
 }
 export const routeTree = rootRouteImport

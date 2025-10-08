@@ -1,8 +1,8 @@
+import { WeightEntryEmpty } from "@/components//weight-tracker/weight-entry-empty";
 import { Typography } from "@/components/ui/typography";
-import { WeightChart } from "@/components/weight-chart";
-import { WeightEntryEmpty } from "@/components/weight-entry-empty";
-import { WeightFormDialog } from "@/components/weight-form-dialog";
-import WeightTable from "@/components/weight-table/weight-table";
+import { WeightChart } from "@/components/weight-tracker/weight-chart";
+import { WeightFormDialog } from "@/components/weight-tracker/weight-form-dialog";
+import WeightTable from "@/components/weight-tracker/weight-table/weight-table";
 import type { WeightEntry } from "@/types/weight-tracker";
 
 type WeightTrackerProps = {

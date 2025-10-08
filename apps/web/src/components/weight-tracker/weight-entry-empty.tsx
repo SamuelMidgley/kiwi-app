@@ -7,7 +7,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "./ui/empty";
+} from "@/components/ui/empty";
+
 import { WeightFormDialog } from "./weight-form-dialog";
 
 export const WeightEntryEmpty = () => {
