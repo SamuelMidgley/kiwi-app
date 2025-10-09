@@ -1,4 +1,4 @@
-name: Run tests and linting for web
+name: Tests and linting for web
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   lintandtest:
-    name: Run tests and lint
+    name: Run
     runs-on: ubuntu-latest
 
     steps:
