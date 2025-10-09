@@ -9,19 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as GamesIndexRouteImport } from './routes/games/index'
+import { Route as AppsIndexRouteImport } from './routes/apps/index'
 import { Route as GamesSolitaireRouteImport } from './routes/games/solitaire'
-import { Route as AuthenticatedWeightTrackerRouteImport } from './routes/_authenticated/weight-tracker'
+import { Route as AppsWeightTrackerRouteImport } from './routes/apps/weight-tracker'
 
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
-  id: '/_authenticated/',
-  path: '/',
+const GamesIndexRoute = GamesIndexRouteImport.update({
+  id: '/games/',
+  path: '/games/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIndexRoute = AppsIndexRouteImport.update({
+  id: '/apps/',
+  path: '/apps/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GamesSolitaireRoute = GamesSolitaireRouteImport.update({
@@ -29,66 +35,82 @@ const GamesSolitaireRoute = GamesSolitaireRouteImport.update({
   path: '/games/solitaire',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedWeightTrackerRoute =
-  AuthenticatedWeightTrackerRouteImport.update({
-    id: '/_authenticated/weight-tracker',
-    path: '/weight-tracker',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const AppsWeightTrackerRoute = AppsWeightTrackerRouteImport.update({
+  id: '/apps/weight-tracker',
+  path: '/apps/weight-tracker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/login': typeof LoginRoute
-  '/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/': typeof IndexRoute
+  '/apps/weight-tracker': typeof AppsWeightTrackerRoute
   '/games/solitaire': typeof GamesSolitaireRoute
-  '/': typeof AuthenticatedIndexRoute
+  '/apps': typeof AppsIndexRoute
+  '/games': typeof GamesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/login': typeof LoginRoute
-  '/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/': typeof IndexRoute
+  '/apps/weight-tracker': typeof AppsWeightTrackerRoute
   '/games/solitaire': typeof GamesSolitaireRoute
-  '/': typeof AuthenticatedIndexRoute
+  '/apps': typeof AppsIndexRoute
+  '/games': typeof GamesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/login': typeof LoginRoute
-  '/_authenticated/weight-tracker': typeof AuthenticatedWeightTrackerRoute
+  '/': typeof IndexRoute
+  '/apps/weight-tracker': typeof AppsWeightTrackerRoute
   '/games/solitaire': typeof GamesSolitaireRoute
-  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/apps/': typeof AppsIndexRoute
+  '/games/': typeof GamesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/weight-tracker' | '/games/solitaire' | '/'
+  fullPaths:
+    | '/'
+    | '/apps/weight-tracker'
+    | '/games/solitaire'
+    | '/apps'
+    | '/games'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/weight-tracker' | '/games/solitaire' | '/'
+  to: '/' | '/apps/weight-tracker' | '/games/solitaire' | '/apps' | '/games'
   id:
     | '__root__'
-    | '/login'
-    | '/_authenticated/weight-tracker'
+    | '/'
+    | '/apps/weight-tracker'
     | '/games/solitaire'
-    | '/_authenticated/'
+    | '/apps/'
+    | '/games/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  LoginRoute: typeof LoginRoute
-  AuthenticatedWeightTrackerRoute: typeof AuthenticatedWeightTrackerRoute
+  IndexRoute: typeof IndexRoute
+  AppsWeightTrackerRoute: typeof AppsWeightTrackerRoute
   GamesSolitaireRoute: typeof GamesSolitaireRoute
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AppsIndexRoute: typeof AppsIndexRoute
+  GamesIndexRoute: typeof GamesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/': {
-      id: '/_authenticated/'
+    '/': {
+      id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games/': {
+      id: '/games/'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/': {
+      id: '/apps/'
+      path: '/apps'
+      fullPath: '/apps'
+      preLoaderRoute: typeof AppsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/games/solitaire': {
@@ -98,21 +120,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GamesSolitaireRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/weight-tracker': {
-      id: '/_authenticated/weight-tracker'
-      path: '/weight-tracker'
-      fullPath: '/weight-tracker'
-      preLoaderRoute: typeof AuthenticatedWeightTrackerRouteImport
+    '/apps/weight-tracker': {
+      id: '/apps/weight-tracker'
+      path: '/apps/weight-tracker'
+      fullPath: '/apps/weight-tracker'
+      preLoaderRoute: typeof AppsWeightTrackerRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  LoginRoute: LoginRoute,
-  AuthenticatedWeightTrackerRoute: AuthenticatedWeightTrackerRoute,
+  IndexRoute: IndexRoute,
+  AppsWeightTrackerRoute: AppsWeightTrackerRoute,
   GamesSolitaireRoute: GamesSolitaireRoute,
-  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AppsIndexRoute: AppsIndexRoute,
+  GamesIndexRoute: GamesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

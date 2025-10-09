@@ -38,3 +38,8 @@ jobs:
       - name: Run tests for Web
         working-directory: apps/web
         run: npm run test
+
+      # Step 6: Run type checking for apps/web
+      - name: Run type check for Web
+        working-directory: apps/web
+        run: npm run tsc

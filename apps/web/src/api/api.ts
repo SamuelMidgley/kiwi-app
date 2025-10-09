@@ -1,6 +1,6 @@
 import axiosBuilder, { type Options } from "redaxios";
 
-import localStorageHelper from "@/utils/localStorageHelper";
+import { getAuthValue } from "./utils";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -13,37 +13,26 @@ const apiInstance = axiosBuilder.create({
 });
 
 const get = <T>(url: string, config?: Options) => {
-  const { username, password } = localStorageHelper.getUser() ?? {};
-
-  const base64AuthCreds = btoa(username + ":" + password);
-
   return apiInstance.get<T>(url, {
     ...config,
-    auth: `Basic ${base64AuthCreds}`,
+    auth: getAuthValue(),
   });
 };
 
 const deleteRequest = (url: string) => {
-  const { username, password } = localStorageHelper.getUser() ?? {};
-
-  const base64AuthCreds = btoa(username + ":" + password);
-
   return apiInstance.delete(url, {
-    auth: `Basic ${base64AuthCreds}`,
+    auth: getAuthValue(),
   });
 };
 
 const post = <T>(url: string, body: T) => {
-  const { username, password } = localStorageHelper.getUser() ?? {};
-
-  const base64AuthCreds = btoa(username + ":" + password);
-
   return apiInstance.post(url, body, {
-    auth: `Basic ${base64AuthCreds}`,
+    auth: getAuthValue(),
   });
 };
 
 const api = {
+  apiInstance,
   get,
   delete: deleteRequest,
   post,
